@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "马克记(marknote)",
+  "version": "1.0",
+  "description": "标注页面你关注的内容，在阅读结束后有选择的保存",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "马克记"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+} 
