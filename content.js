@@ -72,6 +72,7 @@ function initializeExtension() {
       color: black;
       border: 1px solid #ccc;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      font-size: 14px;
     `;
     
     const header = document.createElement('div');
@@ -132,12 +133,26 @@ function initializeExtension() {
         padding: 8px;
         margin: 4px 0;
         border-bottom: 1px solid #eee;
+        font-size: 14px;
       }
       .highlight-text-content {
         color: black;
       }
       .welcome-message {
         color: black;
+        font-size: 13px;
+      }
+      .highlight-text {
+        color: black !important;
+        background-color: #ffeb3b;
+        padding: 2px;
+      }
+      .page-title {
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .action-btn {
+        font-size: 13px;
       }
     `;
     document.head.appendChild(highlightStyle);
