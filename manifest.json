@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "马克记(marknote)",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "标注页面你关注的内容，在阅读结束后有选择的保存",
   "permissions": [
     "activeTab",
@@ -13,6 +13,7 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
+    "default_popup": "popup.html",
     "default_title": "马克记"
   },
   "icons": {
