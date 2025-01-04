@@ -171,4 +171,48 @@
   line-height: 1.6;
   font-size: 14px;
   text-align: center;
+}
+
+.marknote-highlight {
+    background-color: #ffd700;
+    display: inline;
+}
+
+.marknote-close {
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 4px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.marknote-close:hover {
+    color: #ff0000;
+}
+
+.highlight-container {
+    display: inline;
+    position: relative;
+}
+
+.highlight-text {
+    background-color: #fff68f;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.highlight-close {
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 4px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-close:hover {
+    color: #ff0000;
 } 

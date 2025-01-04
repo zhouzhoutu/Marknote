@@ -11,6 +11,10 @@ Marknote is a simple and practical Chrome browser extension that helps you annot
 - 🗑️ Clear annotations anytime
 - 💾 Selectively save important content
 
+## Demo
+
+![Marknote Demo](https://raw.githubusercontent.com/zhouzhoutu/repofmedia/main/image/intro_marknote.gif)
+
 ## How to Use
 
 ### 1. Getting Started
@@ -21,18 +25,19 @@ Marknote is a simple and practical Chrome browser extension that helps you annot
 ### 2. Adding Annotations
 
 - Select any text on the webpage with your mouse
-- An annotation button will appear above the selected text
-- Click the button to add the text to the note panel
+- The selected text will be automatically highlighted
+- Click the highlighted text again to remove the highlight
+- All highlighted content will appear in the side panel
 
 ### 3. Managing Notes
 
 - All annotations are displayed in chronological order in the side panel
-- You can delete unwanted annotations at any time
+- Click the '×' button to remove unwanted annotations
 - Choose to save important content before closing the page
 
 ### 4. Clearing Annotations
 
-- Click the delete button on the right side of each annotation to remove it
+- Click the highlighted text or the delete button in side panel to remove annotations
 - All unsaved annotations will be automatically cleared when the page is closed
 
 ## Notes

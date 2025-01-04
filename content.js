@@ -171,7 +171,12 @@ function initializeExtension() {
     
     const highlights = document.querySelectorAll('.highlight-item');
     highlights.forEach(item => {
-      content.push(`  > ${item.textContent}`);
+        // 获取文本内容，移除末尾的 × 符号
+        let text = item.textContent.trim();
+        if (text.endsWith('×')) {
+            text = text.slice(0, -1).trim();
+        }
+        content.push(`  > ${text}`);
     });
     
     return content.join('\n');
@@ -241,28 +246,31 @@ function initializeExtension() {
 
   function addHighlight(text) {
     if (addedContents.has(text)) {
-      return;
+        return;
     }
     
-    // 获取或创建面板
     let panel = document.querySelector('.reader-side-panel');
     if (!panel) {
-      panel = createSidePanel();
+        panel = createSidePanel();
     }
     
     const content = panel.querySelector('.panel-content');
     
     const welcomeMsg = content.querySelector('.welcome-message');
     if (welcomeMsg) {
-      welcomeMsg.remove();
+        welcomeMsg.remove();
     }
     
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
+    
+    // 只创建高亮 span，不添加关闭按钮
     const span = document.createElement('span');
     span.className = 'highlight-text';
-    range.surroundContents(span);
+    span.appendChild(range.extractContents());
+    range.insertNode(span);
     
+    // 在侧边面板中创建对应的项
     const highlightItem = document.createElement('div');
     highlightItem.className = 'highlight-item';
     
@@ -280,36 +288,41 @@ function initializeExtension() {
     content.appendChild(highlightItem);
     
     addedContents.set(text, {
-      span: span,
-      item: highlightItem
+        container: span,
+        item: highlightItem
     });
-    
-    span.addEventListener('click', (e) => {
-      e.preventDefault();
-      removeHighlight(text, span, highlightItem);
+
+    // 为高亮文本添加点击事件
+    span.addEventListener('click', () => {
+        removeHighlight(text, span, highlightItem);
     });
   }
 
-  function removeHighlight(text, span, item) {
-    const parent = span.parentNode;
-    if (parent) {
-      parent.replaceChild(document.createTextNode(span.textContent), span);
-      parent.normalize();
+  function removeHighlight(text, container, item) {
+    if (container) {
+        const parent = container.parentNode;
+        if (parent) {
+            // 直接使用高亮文本的内容
+            const textContent = container.textContent;
+            parent.replaceChild(document.createTextNode(textContent), container);
+            parent.normalize();
+        }
     }
     
     if (item) {
-      item.remove();
+        item.remove();
     }
     
     addedContents.delete(text);
     
+    // 检查是否需要显示欢迎消息
     const panel = document.querySelector('.reader-side-panel');
     if (panel && addedContents.size === 0) {
-      const content = panel.querySelector('.panel-content');
-      const welcomeMsg = document.createElement('div');
-      welcomeMsg.className = 'welcome-message';
-      welcomeMsg.textContent = '欢迎使用马克记(marknote)，马克记会在当前网页生成一个浮窗来记录这些内容，你可以在阅读完毕后选择保存或复制这些内容。';
-      content.appendChild(welcomeMsg);
+        const content = panel.querySelector('.panel-content');
+        const welcomeMsg = document.createElement('div');
+        welcomeMsg.className = 'welcome-message';
+        welcomeMsg.textContent = '欢迎使用马克记(marknote)，马克记会在当前网页生成一个浮窗来记录这些内容，你可以在阅读完毕后选择保存或复制这些内容。';
+        content.appendChild(welcomeMsg);
     }
   }
 
@@ -358,5 +371,65 @@ function initializeExtension() {
     }
     
     // 现有代码...
+  }
+
+  function handleSelectedText(selectedText, range) {
+    // 检查选中的内容是否包含或完全是关闭按钮
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = selectedText;
+    
+    // 移除所有的关闭按钮元素
+    const closeButtons = tempDiv.getElementsByClassName('marknote-close');
+    while (closeButtons.length > 0) {
+        closeButtons[0].parentNode.removeChild(closeButtons[0]);
+    }
+    
+    // 获取清理后的文本内容
+    const cleanText = tempDiv.textContent.trim();
+    
+    // 如果清理后的文本为空，则不进行处理
+    if (!cleanText) {
+        return;
+    }
+    
+    // 使用清理后的文本继续处理
+    // ...其余的处理逻辑保持不变...
+  }
+
+  function highlightRange(range) {
+    const span = document.createElement('span');
+    span.className = 'marknote-highlight';
+    
+    // 创建关闭按钮，但将其添加为单独的元素
+    const closeButton = document.createElement('span');
+    closeButton.className = 'marknote-close';
+    closeButton.textContent = '×';
+    closeButton.style.marginLeft = '2px';
+    
+    // 将选中的内容放入主span中
+    span.appendChild(range.extractContents());
+    range.insertNode(span);
+    
+    // 在主span后插入关闭按钮
+    span.parentNode.insertBefore(closeButton, span.nextSibling);
+    
+    // 为关闭按钮添加点击事件
+    closeButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        span.replaceWith(...span.childNodes);
+        closeButton.remove();
+        // 更新存储的内容
+        updateStoredContent();
+    });
+  }
+
+  function updateStoredContent() {
+    const highlights = document.getElementsByClassName('marknote-highlight');
+    const content = Array.from(highlights).map(h => h.textContent.trim()).join('\n\n');
+    // 存储更新后的内容
+    chrome.runtime.sendMessage({
+        action: 'updateContent',
+        content: content
+    });
   }
 } 
