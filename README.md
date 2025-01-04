@@ -1,57 +1,59 @@
-# 马克记 (Marknote)
+# Marknote
 
-马克记是一个简单实用的 Chrome 浏览器扩展，帮助您在网页阅读时进行文本标注和笔记整理。
+[简体中文](README.zh-CN.md) | [English](README.md)
 
-## 功能特点
+Marknote is a simple and practical Chrome browser extension that helps you annotate and organize notes while reading web pages.
 
-- 🖍️ 快速文本高亮
-- 📝 临时笔记保存
-- 🗑️ 随时清除标注
-- 💾 选择性保存重要内容
+## Features
 
-## 使用方法
+- 🖍️ Quick text highlighting
+- 📝 Temporary note saving
+- 🗑️ Clear annotations anytime
+- 💾 Selectively save important content
 
-### 1. 开始使用
+## How to Use
 
-- 点击浏览器工具栏中的马克记图标，打开侧边笔记面板
-- 首次使用时会看到使用介绍
+### 1. Getting Started
 
-### 2. 添加标注
+- Click the Marknote icon in the browser toolbar to open the side note panel
+- First-time users will see usage instructions
 
-- 用鼠标选择网页中的任意文本
-- 在选中文本上方会出现标注按钮
-- 点击按钮将文本添加到笔记面板
+### 2. Adding Annotations
 
-### 3. 管理笔记
+- Select any text on the webpage with your mouse
+- An annotation button will appear above the selected text
+- Click the button to add the text to the note panel
 
-- 所有标注会按时间顺序显示在侧边面板中
-- 可以随时删除不需要的标注
-- 关闭页面前可以选择性保存重要内容
+### 3. Managing Notes
 
-### 4. 清除标注
+- All annotations are displayed in chronological order in the side panel
+- You can delete unwanted annotations at any time
+- Choose to save important content before closing the page
 
-- 点击各条标注右侧的删除按钮即可删除单条标注
-- 关闭页面时所有未保存的标注会自动清除
+### 4. Clearing Annotations
 
-## 注意事项
+- Click the delete button on the right side of each annotation to remove it
+- All unsaved annotations will be automatically cleared when the page is closed
 
-- 标注内容为临时保存，刷新页面后会清除
-- 重要内容请在关闭页面前进行保存
-- 支持在任意网页使用，无需特殊设置
+## Notes
 
-## 隐私说明
+- Annotations are temporarily saved and will be cleared after refreshing the page
+- Please save important content before closing the page
+- Can be used on any webpage without special settings
 
-马克记完全在本地运行，不会收集任何用户数据或上传任何内容。
+## Privacy Statement
 
-## 技术支持
+Marknote runs completely locally and does not collect any user data or upload any content.
 
-如有问题或建议，欢迎提出 Issue。
+## Technical Support
 
-## 更新记录
+For issues or suggestions, please feel free to raise an Issue.
 
-- 2025-01-02 1.0.0 版本发布
-  - 添加了文本高亮功能
-  - 添加了标记清除功能
-- 2025-01-03 1.0.1 版本发布
-  - 添加了对当前页面开关功能
-  - 修复了暗黑模式的页面下浮窗的样式问题
+## Update Log
+
+- 2025-01-02 Version 1.0.0 released
+  - Added text highlighting feature
+  - Added mark clearing feature
+- 2025-01-03 Version 1.0.1 released
+  - Added current page toggle function
+  - Fixed floating window style issues in dark mode
