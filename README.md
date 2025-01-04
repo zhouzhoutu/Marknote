@@ -2,14 +2,14 @@
 
 [简体中文](README.zh-CN.md) | [English](README.md)
 
-Marknote is a simple and practical Chrome browser extension that helps you annotate and organize notes while reading web pages.
+Marknote is a simple and practical Chrome browser extension that helps you quickly record and export important content while reading web pages.
 
 ## Features
 
-- 🖍️ Quick text highlighting
+- 📝️ Quick text highlighting
 - 📝 Temporary note saving
 - 🗑️ Clear annotations anytime
-- 💾 Selectively save important content
+- 💾 Selective content saving
 
 ## Demo
 
@@ -25,7 +25,7 @@ Marknote is a simple and practical Chrome browser extension that helps you annot
 ### 2. Adding Annotations
 
 - Select any text on the webpage with your mouse
-- The selected text will be automatically highlighted
+- Selected text will be automatically highlighted
 - Click the highlighted text again to remove the highlight
 - All highlighted content will appear in the side panel
 
@@ -33,7 +33,7 @@ Marknote is a simple and practical Chrome browser extension that helps you annot
 
 - All annotations are displayed in chronological order in the side panel
 - Click the '×' button to remove unwanted annotations
-- Choose to save important content before closing the page
+- Save important content before closing the page
 
 ### 4. Clearing Annotations
 
@@ -43,7 +43,7 @@ Marknote is a simple and practical Chrome browser extension that helps you annot
 ## Notes
 
 - Annotations are temporarily saved and will be cleared after refreshing the page
-- Please save important content before closing the page
+- Please save important content in time
 - Can be used on any webpage without special settings
 
 ## Privacy Statement
@@ -54,6 +54,12 @@ Marknote runs completely locally and does not collect any user data or upload an
 
 For issues or suggestions, please feel free to raise an Issue.
 
+## Support
+
+If you find this extension helpful, feel free to buy me a coffee.
+
+![Donate](https://github.com/zhouzhoutu/repofmedia/blob/main/image/donate.png)
+
 ## Update Log
 
 - 2025-01-02 Version 1.0.0 released
@@ -62,3 +68,6 @@ For issues or suggestions, please feel free to raise an Issue.
 - 2025-01-03 Version 1.0.1 released
   - Added current page toggle function
   - Fixed floating window style issues in dark mode
+- 2025-01-04 Version 1.0.2 released
+  - Fixed bug where 'x' mark was copied with text
+  - Adjusted markdown image bed reference to reduce extension size
